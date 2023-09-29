@@ -1,9 +1,9 @@
 import { Text } from "@rneui/themed"
 import NavigationButtons from "./NavigationButtons";
-//import { getPopularMovies } from "../backend/api";
+import { getPopularMovies } from "../backend/apiGetData";
 
-const Home = ()=>{
- const res = getPopularMovies()
+const Home = async()=>{
+const res = await getPopularMovies();
 console.log(res);
 return (
     <>
