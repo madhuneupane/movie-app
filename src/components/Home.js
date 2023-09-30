@@ -1,14 +1,42 @@
 import { Text } from "@rneui/themed"
 import NavigationButtons from "./NavigationButtons";
-import { getPopularMovies } from "../backend/apiGetData";
+import { getMovies } from "../backend/apiGetData";
+import { useEffect, useState } from "react";
+import MovieList from "./list/MovieList";
 
-const Home = async()=>{
-const res = await getPopularMovies();
-console.log(res);
+
+const Home = ({navigation})=>
+{
+    const [popularMovies,setPopularMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+  
+     useEffect(()=>{
+    //     const returnMovies = async(param)=>{
+    //         const res = await getMovies(param);
+            
+    //         return res.results;
+    //     }
+    //     //const nowPlayingMovies = returnMovies("now_playing");
+    //     const popularMovie = returnMovies("popular")
+    //     setPopularMovies(popularMovie);
+    //     console.log(popularMovie);
+    //     //const topRated = returnMovies("top_rated")
+    //     //const upcoming = returnMovies("upcoming")
+    getMovies("popular").then((data)=>{
+        setPopularMovies(data)
+        //console.log(data);
+        
+    
+       });
+     },[])
+
+
 return (
     <>
     <NavigationButtons />
-    <Text>Hello</Text>
+    
+    <MovieList movies={popularMovies} navigation={navigation}/>
     </>
 )
 }
