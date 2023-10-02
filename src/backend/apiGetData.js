@@ -35,3 +35,19 @@ export const getMovie = async (id) => {
   return movies
 };
 
+
+
+export const getTVs = async (param) => {
+  let TvShows = []
+  await fetch( `https://api.themoviedb.org/3/tv/${param}?language=en-US&page=1`, options)
+  .then(response => response.json())
+  .then(response => {
+    TvShows = response.results
+    
+  })
+  .catch(err => console.error(err));
+
+  return TvShows
+};
+
+
