@@ -87,7 +87,7 @@ return (
 
 {tabOption==1 &&(
   <>
-  <SearchScreen/>
+  <SearchScreen navigation={navigation}/>
 
   </>
 )}

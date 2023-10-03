@@ -51,3 +51,17 @@ export const getTVs = async (param) => {
 };
 
 
+export const searchResult = async (type, name) => {
+  let media = []
+  await fetch( `https://api.themoviedb.org/3/search/${type}?query=${name}&include_adult=false&language=en-US&page=1`, options)
+  .then(response => response.json())
+  .then(response => {
+    media = response.results
+    
+  })
+  .catch(err => console.error(err));
+
+  return media
+};
+
+
