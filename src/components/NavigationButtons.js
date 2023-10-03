@@ -26,7 +26,7 @@ return (
         
       />
       <Tab.Item
-        title="Search Results"
+        title="Search "
         titleStyle={{ fontSize: 14,color:"#323232" }}
         
       />
