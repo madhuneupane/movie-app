@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import MovieList from "./list/MovieList";
 import Dropdown from "./DropDown";
 import Loading from "./Loading";
+import SearchScreen from "../SearchScreen";
 
 const Home = ({navigation})=>
 {
@@ -81,9 +82,15 @@ return (
     optionSelected(selectedOption);
     //console.log('Selected:', selectedOption);
   }}
-  selectedOption={'Option 1'} // Initially selected option
-  buttonText={'Select an Option'}/>
+  />
   <MovieList movies={popularMovies} navigation={navigation}/></>)}
+
+{tabOption==1 &&(
+  <>
+  <SearchScreen/>
+
+  </>
+)}
 
 
 {tabOption==2 && (
@@ -95,9 +102,12 @@ return (
     //console.log('Selected:', selectedOption);
     optionSelectedFromTV(selectedOption);
   }}
-  selectedOption={'Option 1'} // Initially selected option
-  buttonText={'Select an Option'}/>
-  <MovieList movies={TvShows} navigation={navigation}/></>)}</>}
+/>
+  <MovieList movies={TvShows} navigation={navigation}/></>)}
+  
+  
+  
+  </>}
     
     
     </>
