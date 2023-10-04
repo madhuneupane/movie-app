@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 function Dropdown(props) {
   const { options, onSelect } = props;
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Popular");
+  const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const toggleDropdown = () => {
     setIsVisible(!isVisible);

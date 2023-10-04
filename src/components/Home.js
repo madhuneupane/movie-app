@@ -61,6 +61,7 @@ const Home = ({navigation})=>
     
        });
        getTVs("airing_today").then((data)=>{
+       // console.log(data[0]);
         setTVShows(data)
        })
      },[])
@@ -70,7 +71,7 @@ return (
     <>
     <NavigationButtons onSelect ={(selectedOption)=>{
         setTabOption(selectedOption);
-        console.log("from home:",selectedOption);
+        //console.log("from home:",selectedOption);
     }} />
    
 {loading ? <Loading />:<>{tabOption==0 && (
@@ -83,7 +84,7 @@ return (
     //console.log('Selected:', selectedOption);
   }}
   />
-  <MovieList movies={popularMovies} navigation={navigation}/></>)}
+  <MovieList movies={popularMovies} navigation={navigation} media="movie"/></>)}
 
 {tabOption==1 &&(
   <>
@@ -103,7 +104,7 @@ return (
     optionSelectedFromTV(selectedOption);
   }}
 />
-  <MovieList movies={TvShows} navigation={navigation}/></>)}
+  <MovieList movies={TvShows} navigation={navigation} media="tv"/></>)}
   
   
   

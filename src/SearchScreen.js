@@ -10,7 +10,7 @@ const SearchScreen = ({navigation}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchName, setSearchName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [optionChose, setOptionChose] = useState("multi");
+  const [optionChose, setOptionChose] = useState("movie");
   const [media, setMedia] = useState([]);
 
   const searchClicked = () => {
@@ -22,8 +22,8 @@ const SearchScreen = ({navigation}) => {
       searchResult(optionChose, searchName).then((data)=>{
         //setPopularMovies(data)
         setMedia(data);
-        //console.log(d ata[0].original_title);
-       console.log(data[0]);
+        console.log(data[0]);
+       //console.log(data[0]);
         
     
        });
@@ -101,7 +101,7 @@ const SearchScreen = ({navigation}) => {
           {errorMessage}
         </Text>
       )}
-      {media.length?<MovieList movies={media} navigation={navigation}/>:
+      {media.length?<MovieList movies={media} navigation={navigation} media={optionChose}/>:
       <Text style={{marginLeft:100,marginTop:170, fontSize:20, fontWeight:"bold"}}>Please Initiate a Search</Text>}
     </>
   );
