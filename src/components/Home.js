@@ -1,4 +1,3 @@
-import { Text } from "@rneui/themed"
 import NavigationButtons from "./NavigationButtons";
 import { getMovies, getTVs } from "../backend/apiGetData";
 import { useEffect, useState } from "react";
@@ -43,17 +42,7 @@ const Home = ({navigation})=>
        //console.log(loading);
   } 
      useEffect(()=>{
-    //     const returnMovies = async(param)=>{
-    //         const res = await getMovies(param);
-            
-    //         return res.results;
-    //     }
-    //     //const nowPlayingMovies = returnMovies("now_playing");
-    //     const popularMovie = returnMovies("popular")
-    //     setPopularMovies(popularMovie);
-    //     console.log(popularMovie);
-    //     //const topRated = returnMovies("top_rated")
-    //     //const upcoming = returnMovies("upcoming")
+    
     getMovies("now_playing").then((data)=>{
         setPopularMovies(data)
        

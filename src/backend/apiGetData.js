@@ -74,7 +74,16 @@ export const getPersonByID = async (id) => {
 
 export const getTVs = async (param) => {
   let TvShows = []
-  await fetch( `https://api.themoviedb.org/3/tv/${param}?language=en-US&page=1`, options)
+  let pageNumber = 1;
+  
+/*It was returning same data on first page for different dropdown options 
+  so I am returning from page 3 */
+  if(param !="top_rated")
+  pageNumber = 3;
+
+  
+
+  await fetch( `https://api.themoviedb.org/3/tv/${param}?language=en-US&page=${pageNumber}`, options)
   .then(response => response.json())
   .then(response => {
     TvShows = response.results
