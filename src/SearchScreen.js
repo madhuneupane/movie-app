@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     marginRight: 10,
+    color:"gray"
   },
   searchContainer: {
     flexDirection: "row",
@@ -160,6 +161,7 @@ const styles = StyleSheet.create({
   },
   searchButtonIcon: {
     marginRight: 5,
+    color:"white"
   },
   searchButtonText: {
     color: "white",
