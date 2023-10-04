@@ -2,28 +2,39 @@ import { Text,View, Image, StyleSheet } from "react-native"
 import { getMovieByID,getTVByID,getPersonByID } from "../backend/apiGetData";
 import { useEffect, useState } from "react";
 
-const Details =({route})=>{
+const Details =({navigation,route})=>{
     const [movieData, setMovieData] = useState({})
    useEffect(()=>{
+    
 
     if(route.params.media_type=="movie"){
     getMovieByID(route.params.id).then((data)=>{
         //console.log(data);
+        navigation.setOptions({
+            title: data.original_title || data.original_name, // Set your custom title here
+          });
         setMovieData(data)
     })
 }
     else if(route.params.media_type=="tv"){
         getTVByID(route.params.id).then((data)=>{
             //console.log(data);
+            navigation.setOptions({
+                title: data.original_title || data.original_name, // Set your custom title here
+              });
             setMovieData(data)
         })
     }
     else{
         getPersonByID(route.params.id).then((data)=>{
             //console.log(data);
+             navigation.setOptions({
+        title: data.original_title || data.original_name, // Set your custom title here
+      });
             setMovieData(data)
         })
     }
+   
    },[])
     
     

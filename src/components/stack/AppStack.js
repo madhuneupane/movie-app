@@ -26,7 +26,11 @@ const AppStack = ()=>{
             }}/>
             <Stack.Screen 
             name='Details'
-            component={Details}/>
+            component={Details}
+            options={{headerBackTitle:"Back to List",
+            
+        }}
+            />
             </Stack.Navigator>
             </NavigationContainer>
             
