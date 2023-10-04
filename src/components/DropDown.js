@@ -44,7 +44,14 @@ function Dropdown(props) {
                     toggleDropdown();
                   }}
                 >
-                  <Text>{option}</Text>
+                  <View style={{flexDirection:"row"}}>
+                  <Text style={{marginLeft:7,fontWeight:"bold",fontSize:18}}>{option}
+                 </Text>
+                 {option === selectedOption && (
+                    <Icon name="check" size={25} style={{ color: 'white', marginLeft:7 }} />
+                  )}
+                  </View>
+                  
                 </TouchableOpacity>
               ))}
             </View>
@@ -77,17 +84,24 @@ alignItems:"center"
     justifyContent: 'flex-end',
   },
   dropdown: {
-    backgroundColor: 'white',
+    
+    margin:2,
+    
+
+    borderRadius:10,
+    backgroundColor: '#d4d4d4',
     borderTopWidth: 1,
     borderTopColor: 'lightgray',
   },
   dropdownOption: {
     padding: 10,
-    borderBottomWidth: 1,
+    marginBottom:3,
+    
+    
     borderBottomColor: 'lightgray',
   },
   selectedOption: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'rgba(111, 202, 186, 1)',
   },
 });
 
