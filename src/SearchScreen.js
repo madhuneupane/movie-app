@@ -22,6 +22,7 @@ const SearchScreen = ({navigation}) => {
       searchResult(optionChose, searchName).then((data)=>{
         //setPopularMovies(data)
         setMedia(data);
+        setSearchName("");
         console.log(data[0]);
        //console.log(data[0]);
         
@@ -59,6 +60,7 @@ const SearchScreen = ({navigation}) => {
           <Icon name="search" size={20} style={styles.searchIcon} />
           <TextInput
             style={styles.input}
+            value={searchName}
             placeholder="i.e James Bond, CSI"
             onChangeText={(e) => {
               setSearchName(e);
