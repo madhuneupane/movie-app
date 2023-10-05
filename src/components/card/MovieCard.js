@@ -2,7 +2,7 @@ import { Button, Card,Text } from "@rneui/themed";
 import { View } from "react-native";
 import { StyleSheet } from "react-native";
 
-const MovieCard = ({image,title,popularity,release,id,navigation})=>{
+const MovieCard = ({image,title,popularity,release,id,media,navigation})=>{
     
     return(
         <Card >
@@ -24,7 +24,9 @@ const MovieCard = ({image,title,popularity,release,id,navigation})=>{
                 height: 40,
                 borderRadius: 3,
               }} onPress={()=>{
-                navigation.navigate('Details',{id
+                navigation.navigate('Details',
+                {id,
+                media_type:media
                     
                 })
               }} />

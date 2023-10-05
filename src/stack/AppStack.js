@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import Home from "../Home";
-import Details from "../Details";
+import Home from "../screens/Home";
+import Details from "../screens/Details";
 
 const Stack = createNativeStackNavigator()
 
@@ -26,7 +26,11 @@ const AppStack = ()=>{
             }}/>
             <Stack.Screen 
             name='Details'
-            component={Details}/>
+            component={Details}
+            options={{headerBackTitle:"Back to List",
+            
+        }}
+            />
             </Stack.Navigator>
             </NavigationContainer>
             

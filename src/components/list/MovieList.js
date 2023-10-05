@@ -1,18 +1,18 @@
 import { FlatList } from "react-native"
 import MovieCard from "../card/MovieCard"
 
-const MovieList = ({movies,navigation})=>{
-    //console.log(movies[0]);
+const MovieList = ({mediaData,navigation,media})=>{
     return(
         <FlatList 
-        data={movies}
+        data={mediaData}
         renderItem={({item})=>(
             <MovieCard 
             image={item.poster_path}
-            title={item.original_title}
+            title={item.original_title || item.original_name}
             popularity={item.popularity}
-            release={item.release_date}
+            release={item.release_date || item.first_air_date}
             id={item.id}
+            media={item.media_type || media}
             navigation={navigation}/>
     )}
         />

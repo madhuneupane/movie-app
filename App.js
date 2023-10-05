@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Platform} from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider, createTheme, darkColors, lightColors } from '@rneui/themed';
-import AppStack from './src/components/stack/AppStack.js';
+//import AppStack from './src/components/stack/AppStack.js';
+import AppStack from './src/stack/AppStack.js';
 const theme = createTheme({
   lightColors: {
     ...Platform.select({
