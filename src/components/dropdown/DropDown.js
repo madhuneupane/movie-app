@@ -7,6 +7,7 @@ function Dropdown(props) {
   const { options, selectedDropDown, onSelect } = props;
   const [isVisible, setIsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selectedDropDown);
+  //I created new chosenOption state to solve a bug on search screen as it was not updating for dropdown 
   const [chosenOption, setChosenOption] = useState(selectedOption)
 
   const toggleDropdown = () => {
