@@ -40,8 +40,8 @@ function Dropdown(props) {
                   ]}
                   onPress={() => {
                     setSelectedOption(selectedDropDown);
+                    //console.log(option);
                     onSelect(option);
-                    console.log(option);
                     toggleDropdown();
                   }}
                 >

@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Dropdown from "./components/DropDown";
+import Dropdown from "../components/dropdown/DropDown";
 import { Button } from "@rneui/themed";
-import { searchResult } from "./backend/apiGetData";
-import MovieList from "./components/list/MovieList";
+import { searchResult } from "../backend/apiGetData";
+import MovieList from "../components/list/MovieList";
+
 
 const SearchScreen = ({navigation}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchName, setSearchName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [optionChose, setOptionChose] = useState("movie");
+  
+
   const [media, setMedia] = useState([]);
 
   const searchClicked = () => {
@@ -23,7 +26,7 @@ const SearchScreen = ({navigation}) => {
         //setPopularMovies(data)
         setMedia(data);
         setSearchName("");
-        console.log(data[0]);
+        //console.log(data[0]);
        //console.log(data[0]);
         
     
@@ -32,8 +35,11 @@ const SearchScreen = ({navigation}) => {
   };
 
   const optionSelectedFromSearch = (optionSelected) => {
-    setOptionChose(optionSelected);
-    console.log(optionSelected);
+   setOptionChose(optionSelected);
+    
+    //
+    //console.log(optionSelected);
+    //console.log("opt",optionChose);
   };
 
   const handleFocus = () => {
@@ -75,8 +81,11 @@ const SearchScreen = ({navigation}) => {
       <View style={styles.searchContainer}>
         <Dropdown
           options={['movie','multi', 'tv']}
+          selectedDropDown = {optionChose}
           onSelect={(selectedOption) => {
+            //console.log('rr',selectedOption);
             optionSelectedFromSearch(selectedOption);
+            //console.log(optionChose);
           }}
         />
 
@@ -97,13 +106,14 @@ const SearchScreen = ({navigation}) => {
           <Text style={styles.searchButtonText}>Search</Text>
         </Button>
       </View>
+    
 
       {errorMessage && (
         <Text style={{ marginLeft: 50, marginTop: 5, color: "red", fontSize: 12 }}>
           {errorMessage}
         </Text>
       )}
-      {media.length?<MovieList movies={media} navigation={navigation} media={optionChose}/>:
+      {media.length?<MovieList mediaData={media} navigation={navigation} media={optionChose}/>:
       <Text style={{marginLeft:100,marginTop:170, fontSize:20, fontWeight:"bold"}}>Please Initiate a Search</Text>}
     </>
   );

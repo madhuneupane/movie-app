@@ -1,4 +1,4 @@
-import { AUTH_KEY } from "../configuration/apidata";
+import { AUTH_KEY } from "./configuration/apidata";
 const options = {
   method: 'GET',
   headers: {

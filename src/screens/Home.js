@@ -1,10 +1,11 @@
-import NavigationButtons from "./NavigationButtons";
+
+import NavigationButtons from "../components/navigationbar/NavigationButtons";
 import { getMovies, getTVs } from "../backend/apiGetData";
 import { useEffect, useState } from "react";
-import MovieList from "./list/MovieList";
-import Dropdown from "./DropDown";
-import Loading from "./Loading";
-import SearchScreen from "../SearchScreen";
+import MovieList from "../components/list/MovieList";
+import Dropdown from "../components/dropdown/DropDown";
+import Loading from "../components/loading/Loading";
+import SearchScreen from "./SearchScreen";
 
 const Home = ({navigation})=>
 {
@@ -57,7 +58,12 @@ return (
         setTabOption(selectedOption);
         //console.log("from home:",selectedOption);
     }} />
-   
+   {tabOption==1 &&(
+  <>
+  <SearchScreen navigation={navigation}/>
+  </>
+)}
+
    {loading ? <Loading />:<>{tabOption==0 && (
   <>
     <Dropdown
@@ -69,20 +75,10 @@ return (
     //console.log('Selected:', selectedOption);
   }}
   />
-  <MovieList movies={popularMovies} navigation={navigation} media="movie"/>
+  <MovieList mediaData={popularMovies} navigation={navigation} media="movie"/>
   
   </>)}
-  {/* </>} */}
-
-{tabOption==1 &&(
-  <>
-  <SearchScreen navigation={navigation}/>
-
-  </>
-)}
-
-
-{/* {loading ? <Loading />:<> */}
+ 
 {tabOption==2 && (
 <>
 <Dropdown
@@ -94,7 +90,7 @@ return (
     optionSelectedFromTV(selectedOption);
   }}
 />
-  <MovieList movies={TvShows} navigation={navigation} media="tv"/></>)}
+  <MovieList mediaData={TvShows} navigation={navigation} media="tv"/></>)}
   </>}
     
     

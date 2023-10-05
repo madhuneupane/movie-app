@@ -7,7 +7,7 @@ const [index, setIndex] = React.useState(0);
 return (
   <>
     <Tab
-    containerStyle={{backgroundColor:"white",}}
+    containerStyle={{backgroundColor:"white"}}
       value={index}
       onChange={(e) => {
         onSelect(e);
@@ -27,7 +27,7 @@ return (
       />
       <Tab.Item
         title="Search "
-        titleStyle={{ fontSize: 14,color:"#323232" }}
+        titleStyle={{ fontSize: 14,color:"#323232"}}
         
       />
       <Tab.Item
