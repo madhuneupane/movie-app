@@ -7,6 +7,7 @@ function Dropdown(props) {
   const { options, selectedDropDown, onSelect } = props;
   const [isVisible, setIsVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState(selectedDropDown);
+  const [chosenOption, setChosenOption] = useState(selectedOption)
 
   const toggleDropdown = () => {
     setIsVisible(!isVisible);
@@ -15,7 +16,7 @@ function Dropdown(props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} >
-        <Text>{selectedOption} </Text>
+        <Text>{chosenOption} </Text>
         <Icon style={{color:"grey"}} name="chevron-down" size={20} onPress={toggleDropdown}/>
        
       </TouchableOpacity>
@@ -36,11 +37,12 @@ function Dropdown(props) {
                   key={option}
                   style={[
                     styles.dropdownOption,
-                    option === selectedOption && styles.selectedOption,
+                    option === chosenOption && styles.selectedOption,
                   ]}
                   onPress={() => {
                     setSelectedOption(selectedDropDown);
                     //console.log(option);
+                    setChosenOption(option)
                     onSelect(option);
                     toggleDropdown();
                   }}
@@ -48,7 +50,7 @@ function Dropdown(props) {
                   <View style={{flexDirection:"row"}}>
                   <Text style={{marginLeft:7,fontWeight:"bold",fontSize:18}}>{option}
                  </Text>
-                 {option === selectedOption && (
+                 {option === chosenOption && (
                     <Icon name="check" size={25} style={{ color: 'white', marginLeft:7 }} />
                   )}
                   </View>
