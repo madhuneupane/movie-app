@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 function Dropdown(props) {
-  const { options, onSelect } = props;
+  const { options, selectedDropDown, onSelect } = props;
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState(selectedDropDown);
 
   const toggleDropdown = () => {
     setIsVisible(!isVisible);
@@ -39,8 +39,9 @@ function Dropdown(props) {
                     option === selectedOption && styles.selectedOption,
                   ]}
                   onPress={() => {
-                    setSelectedOption(option)
+                    setSelectedOption(selectedDropDown);
                     onSelect(option);
+                    console.log(option);
                     toggleDropdown();
                   }}
                 >
