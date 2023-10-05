@@ -10,36 +10,31 @@ const Home = ({navigation})=>
 {
     const [popularMovies,setPopularMovies] = useState([]);
     const [TvShows,setTVShows] = useState([]);
-
     const [loading, setLoading] = useState(false);
     const [tabOption, setTabOption]=useState(0);
+    const [selectedDropDownMovies, setSelectedDropDownMovies] = useState("now_playing");
+    const [selectedDropDownTV, setSelectedDropDownTV] = useState("airing_today");
 
   const optionSelected=(param) =>{
-    setLoading(true)
-    //console.log(loading);
-    getMovies(param).then((data)=>{
+      setLoading(true) 
+      setSelectedDropDownMovies(param);   
+      getMovies(param).then((data)=>{
         setPopularMovies(data)
-        //console.log(data[0].original_title);
-       // console.log(data[0]);
-        
-    
+        setLoading(false)
        });
-       setLoading(false)
-       //console.log(loading);
+    
+ 
   } 
 
   const optionSelectedFromTV=(param) =>{
     setLoading(true)
-    //console.log(loading);
+    setSelectedDropDownTV(param);
     getTVs(param).then((data)=>{
         setTVShows(data)
-        //console.log(data[0].original_title);
-        //console.log(data[0]);
-        
+        setLoading(false)
     
        });
-       setLoading(false)
-       //console.log(loading);
+       
   } 
      useEffect(()=>{
     
@@ -63,17 +58,21 @@ return (
         //console.log("from home:",selectedOption);
     }} />
    
-{loading ? <Loading />:<>{tabOption==0 && (
-<>
+   {loading ? <Loading />:<>{tabOption==0 && (
+  <>
     <Dropdown
   options={['now_playing','popular', 'top_rated', 'upcoming']}
+  selectedDropDown={selectedDropDownMovies}
   onSelect={(selectedOption) => {
     // Handle the selected option
     optionSelected(selectedOption);
     //console.log('Selected:', selectedOption);
   }}
   />
-  <MovieList movies={popularMovies} navigation={navigation} media="movie"/></>)}
+  <MovieList movies={popularMovies} navigation={navigation} media="movie"/>
+  
+  </>)}
+  {/* </>} */}
 
 {tabOption==1 &&(
   <>
@@ -83,10 +82,12 @@ return (
 )}
 
 
+{/* {loading ? <Loading />:<> */}
 {tabOption==2 && (
 <>
 <Dropdown
   options={['airing_today','on_the_air', 'popular', 'top_rated']}
+  selectedDropDown={selectedDropDownTV}
   onSelect={(selectedOption) => {
     // Handle the selected option
     //console.log('Selected:', selectedOption);
@@ -94,9 +95,6 @@ return (
   }}
 />
   <MovieList movies={TvShows} navigation={navigation} media="tv"/></>)}
-  
-  
-  
   </>}
     
     
