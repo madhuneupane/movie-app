@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { Button } from "@rneui/themed";
 
 const MovieList = ({mediaData,navigation,media})=>{
-    const [page, setPage] = useState(1);
-    const [visibleData, setVisibleData] = useState([]);
+    const [page, setPage] = useState(2);
+    const [visibleData, setVisibleData] = useState(mediaData.slice(0, 10));
     //console.log("lehgth",mediaData.length);
-     useEffect(()=>{
-        loadMore();
-    },[])
+    //  useEffect(()=>{
+    //     loadMore();
+    // },[])
     useEffect(()=>{},[page])
     const loadMore = () => {
        console.log(page);
@@ -17,7 +17,7 @@ const MovieList = ({mediaData,navigation,media})=>{
         const endIndex = startIndex + 10;
         //console.log(startIndex);
         if (endIndex>mediaData.length) {
-            alert("Data finished")
+            alert("Data finished. Going 1st page")
             setPage(1)
             return
             
@@ -28,14 +28,15 @@ const MovieList = ({mediaData,navigation,media})=>{
         //console.log(visibleData.length);
       };
       const loadMoreClicked=()=>{
+        setPage(page+1);
         const updatePage = page+1;
-        setPage(updatePage);
+        
         loadMore();
       }
     return(
         <>
         <FlatList 
-        data={visibleData}
+        data={visibleData.length?visibleData:mediaData}
         renderItem={({item})=>(
             <MovieCard 
             image={item.poster_path}
