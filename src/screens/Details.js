@@ -11,7 +11,7 @@ const Details =({navigation,route})=>{
     getMovieByID(route.params.id).then((data)=>{
         
         navigation.setOptions({
-            title: data.original_title || data.original_name, // Set your custom title here
+            title: data.original_title || data.original_name, 
           });
         setMovieData(data)
     })
@@ -20,7 +20,7 @@ const Details =({navigation,route})=>{
         getTVByID(route.params.id).then((data)=>{
 
             navigation.setOptions({
-                title: data.original_title || data.original_name, // Set your custom title here
+                title: data.original_title || data.original_name, 
               });
             setMovieData(data)
         })
@@ -29,7 +29,7 @@ const Details =({navigation,route})=>{
         getPersonByID(route.params.id).then((data)=>{
             //console.log(data);
              navigation.setOptions({
-        title: data.original_title || data.original_name, // Set your custom title here
+        title: data.original_title || data.original_name, 
       });
             setMovieData(data)
         })

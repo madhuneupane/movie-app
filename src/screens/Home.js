@@ -1,4 +1,3 @@
-
 import NavigationButtons from "../components/navigationbar/NavigationButtons";
 import { getMovies, getTVs } from "../backend/apiGetData";
 import { useEffect, useState } from "react";
@@ -38,15 +37,14 @@ const Home = ({navigation})=>
        
   } 
      useEffect(()=>{
-    
+    setLoading(true)
     getMovies("now_playing").then((data)=>{
         setPopularMovies(data)
-       
+       setLoading(false)
         
     
        });
        getTVs("airing_today").then((data)=>{
-       // console.log(data[0]);
         setTVShows(data)
        })
      },[])
@@ -70,7 +68,7 @@ return (
   options={['now_playing','popular', 'top_rated', 'upcoming']}
   selectedDropDown={selectedDropDownMovies}
   onSelect={(selectedOption) => {
-    // Handle the selected option
+    
     optionSelected(selectedOption);
     //console.log('Selected:', selectedOption);
   }}
@@ -85,8 +83,7 @@ return (
   options={['airing_today','on_the_air', 'popular', 'top_rated']}
   selectedDropDown={selectedDropDownTV}
   onSelect={(selectedOption) => {
-    // Handle the selected option
-    //console.log('Selected:', selectedOption);
+   
     optionSelectedFromTV(selectedOption);
   }}
 />

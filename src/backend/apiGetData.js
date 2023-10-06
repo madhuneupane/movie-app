@@ -19,7 +19,7 @@ export const getMovies = async (param) => {
   return movies
 };
 export const getMovieByID = async (id) => {
-  //console.log(id);
+  
   let movies = {}
   
   await fetch( `https://api.themoviedb.org/3/movie/${id}?language=en-US&page=1`, options)
@@ -27,7 +27,7 @@ export const getMovieByID = async (id) => {
   .then(response => {
    
     movies = response
-    //console.log(response);
+    
     
   })
   .catch(err => console.error(err));
@@ -37,7 +37,7 @@ export const getMovieByID = async (id) => {
 
 
 export const getTVByID = async (id) => {
-  //console.log(id);
+
   let movies = {}
   
   await fetch( `https://api.themoviedb.org/3/tv/${id}?language=en-US&page=1`, options)
@@ -45,7 +45,7 @@ export const getTVByID = async (id) => {
   .then(response => {
    
     movies = response
-    //console.log(response);
+    
     
   })
   .catch(err => console.error(err));
@@ -55,7 +55,7 @@ export const getTVByID = async (id) => {
 
 
 export const getPersonByID = async (id) => {
-  //console.log(id);
+
   let movies = {}
   
   await fetch( `https://api.themoviedb.org/3/person/${id}?language=en-US&page=1`, options)
@@ -63,7 +63,7 @@ export const getPersonByID = async (id) => {
   .then(response => {
    
     movies = response
-    //console.log(response);
+  
     
   })
   .catch(err => console.error(err));
