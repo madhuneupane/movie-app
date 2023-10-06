@@ -23,11 +23,8 @@ const SearchScreen = ({navigation}) => {
     } else {
       setErrorMessage("")
       searchResult(optionChose, searchName).then((data)=>{
-        //setPopularMovies(data)
         setMedia(data);
         setSearchName("");
-        //console.log(data[0]);
-       //console.log(data[0]);
         
     
        });
@@ -36,10 +33,6 @@ const SearchScreen = ({navigation}) => {
 
   const optionSelectedFromSearch = (optionSelected) => {
    setOptionChose(optionSelected);
-    
-    //
-    //console.log(optionSelected);
-    //console.log("opt",optionChose);
   };
 
   const handleFocus = () => {
@@ -83,9 +76,7 @@ const SearchScreen = ({navigation}) => {
           options={['movie','multi', 'tv']}
           selectedDropDown = {optionChose}
           onSelect={(selectedOption) => {
-            //console.log('rr',selectedOption);
             optionSelectedFromSearch(selectedOption);
-            //console.log(optionChose);
           }}
         />
 
